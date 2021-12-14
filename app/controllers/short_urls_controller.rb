@@ -4,6 +4,7 @@ class ShortUrlsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    render json: { urls: ShortUrl.order(click_count: :desc).limit(100) }
   end
 
   def create
@@ -18,6 +19,7 @@ class ShortUrlsController < ApplicationController
   def show
     short_url = ShortUrl.find_by_short_code(params[:id])
     if short_url.present?
+      short_url.update(click_count: short_url.click_count + 1)
       redirect_to short_url.full_url
     else
       head :not_found
