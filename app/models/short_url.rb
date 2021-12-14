@@ -25,6 +25,8 @@ class ShortUrl < ApplicationRecord
 
   def short_code
     id = self.id
+    return nil if id.blank?
+
     short_code = []
     loop do
       short_code << CHARACTERS[id % CHARACTERS.size]
