@@ -1,7 +1,9 @@
 class ShortUrl < ApplicationRecord
 
   CHARACTERS = [*'0'..'9', *'a'..'z', *'A'..'Z'].freeze
+  URL_REGEX = Regexp.new('\A(?:(?:http(?:s)?|ftp)://)(?:\\S+(?::(?:\\S)*)?@)?(?:(?:[a-z0-9\u00a1-\uffff](?:-)*)*(?:[a-z0-9\u00a1-\uffff])+)(?:\\.(?:[a-z0-9\u00a1-\uffff](?:-)*)*(?:[a-z0-9\u00a1-\uffff])+)*(?:\\.(?:[a-z0-9\u00a1-\uffff]){2,})(?::(?:\\d){2,5})?(?:/(?:\\S)*)?\Z')
 
+  validates :full_url, presence: true
   validate :validate_full_url
 
   def self.find_by_short_code(short_code)
@@ -38,6 +40,9 @@ class ShortUrl < ApplicationRecord
   private
 
   def validate_full_url
+    unless full_url =~ URL_REGEX
+      errors.add(:full_url, 'is not a valid url')
+    end
   end
 
 end
