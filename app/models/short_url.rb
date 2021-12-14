@@ -37,6 +37,8 @@ class ShortUrl < ApplicationRecord
   end
 
   def update_title!
+    m = Net::HTTP.get(URI(full_url)).match(/<title>(?<title>.*)<\/title>/)
+    update!(title: m[:title])
   end
 
   private
