@@ -8,6 +8,7 @@ const { Header, Content, Footer } = Layout
 
 const App = () => {
   const [newlyShortenedUrl, setNewlyShortenedUrl] = useState(null)
+  const [reloadUrlsTable, setReloadUrlsTable] = useState(false)
 
   return (
     <Layout>
@@ -22,10 +23,15 @@ const App = () => {
           size="large"
         >
           <CreateShortenedUrlForm
-            onSuccess={(url) => setNewlyShortenedUrl(url)}
+            onSuccess={(url) => {
+              setNewlyShortenedUrl(url)
+              setReloadUrlsTable(!reloadUrlsTable)
+            }}
           />
           <NewlyShortenedUrl url={newlyShortenedUrl} />
-          <MostFrequentlyAccessedUrls />
+          <MostFrequentlyAccessedUrls
+            reload={reloadUrlsTable}
+          />
         </Space>
       </Content>
       <Footer style={{ textAlign: 'center' }}>

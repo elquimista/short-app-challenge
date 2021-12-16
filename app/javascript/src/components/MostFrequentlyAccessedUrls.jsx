@@ -3,14 +3,16 @@ import React, { useEffect, useState } from 'react'
 
 const { Title } = Typography
 
-const MostFrequentlyAccessedUrls = () => {
+const MostFrequentlyAccessedUrls = ({
+  reload,
+}) => {
   const [urls, setUrls] = useState([])
 
   useEffect(async () => {
     const response = await fetch('/short_urls')
     const data = await response.json()
     setUrls(data.urls)
-  }, [])
+  }, [reload])
 
   return (
     <>
