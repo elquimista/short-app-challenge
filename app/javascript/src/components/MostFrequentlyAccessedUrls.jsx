@@ -7,7 +7,7 @@ const MostFrequentlyAccessedUrls = () => {
   const [urls, setUrls] = useState([])
 
   useEffect(async () => {
-    const response = await fetch('/')
+    const response = await fetch('/short_urls')
     const data = await response.json()
     setUrls(data.urls)
   }, [])
