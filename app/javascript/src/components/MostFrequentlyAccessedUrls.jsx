@@ -20,10 +20,12 @@ const MostFrequentlyAccessedUrls = () => {
           title: 'Full URL',
           dataIndex: 'full_url',
           key: 'url',
+          render: (text) => <a href={text} target="_blank">{text}</a>,
         }, {
           title: 'Shortened URL',
           dataIndex: 'shortened_url',
           key: 'shortened_url',
+          render: (text) => <a href={text} target="_blank">{text}</a>,
         }, {
           title: 'Click Count',
           dataIndex: 'click_count',
