@@ -32,6 +32,7 @@ const CreateShortenedUrlForm = ({
       form={form}
       layout="inline"
       onFinish={handleOnFinish}
+      onFinishFailed={() => setServerErrors([])}
       requiredMark={false}
     >
       <Form.Item
