@@ -17,9 +17,13 @@ const MostFrequentlyAccessedUrls = () => {
       <Title level={2}>Top 100 most frequently accessed URLs</Title>
       <Table
         columns={[{
-          title: 'URL',
+          title: 'Full URL',
           dataIndex: 'full_url',
           key: 'url',
+        }, {
+          title: 'Shortened URL',
+          dataIndex: 'shortened_url',
+          key: 'shortened_url',
         }, {
           title: 'Click Count',
           dataIndex: 'click_count',

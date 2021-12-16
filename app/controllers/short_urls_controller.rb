@@ -5,7 +5,7 @@ class ShortUrlsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.json { render json: { urls: ShortUrl.order(click_count: :desc).limit(100) } }
+      format.json { @short_urls = ShortUrl.order(click_count: :desc).limit(100) }
       format.html
     end
   end
