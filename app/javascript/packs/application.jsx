@@ -16,3 +16,12 @@ console.log("Hello World from Webpacker")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from 'src/App'
+import 'antd/dist/antd.css'
+
+window.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(<App />, document.getElementById('root'))
+})
